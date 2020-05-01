@@ -18,3 +18,26 @@ export const fetchData = async () => {
 		return error;
 	}
 };
+
+export const fetchDailyData = async () => {
+	try {
+		const { data } = await axios.get(`${url}/daily`);
+		return data
+
+	} catch (error) {
+		return error;
+	}
+};
+
+export const fetchCountries = async () => {
+	try {
+		const res = await axios.get(`${url}/countries`);
+		const countries = res.data.countries.map(country => country.name)
+			return countries
+	} catch (error) {
+		return error;
+	}
+};
+
+
+
