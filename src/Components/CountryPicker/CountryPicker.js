@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+
 import parse from "autosuggest-highlight/parse";
 import match from "autosuggest-highlight/match";
+import ReactCountryFlag from "react-country-flag";
 
 import { fetchCountries } from "../../api";
 
@@ -20,14 +22,14 @@ const CountryPicker = () => {
 
   return (
     <Autocomplete
-      id="highlights-demo"
+      id="CountryPicker"
       style={{ width: 300 }}
       options={fetchedCountries}
       getOptionLabel={(option) => option.name}
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Highlights"
+          label="Enter a Country Name"
           variant="outlined"
           margin="normal"
         />
@@ -38,6 +40,15 @@ const CountryPicker = () => {
 
         return (
           <div>
+            <ReactCountryFlag
+              countryCode={option.iso2}
+              key={`${option.iso2}_emoji`}
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+              }}
+            />{" "}
             {parts.map((part, index) => (
               <span
                 key={index}
