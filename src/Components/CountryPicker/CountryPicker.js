@@ -9,7 +9,7 @@ import ReactCountryFlag from "react-country-flag";
 
 import { fetchCountries } from "../../api";
 
-const CountryPicker = () => {
+const CountryPicker = (props) => {
   const [fetchedCountries, setFetchedCountries] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
@@ -24,6 +24,7 @@ const CountryPicker = () => {
     <Autocomplete
       id="CountryPicker"
       style={{ width: 300 }}
+      onChange={(event, value) => props.handleCountryChange(value.name)} // prints the selected value
       options={fetchedCountries}
       getOptionLabel={(option) => option.name}
       renderInput={(params) => (
