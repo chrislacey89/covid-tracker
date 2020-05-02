@@ -24,7 +24,12 @@ const CountryPicker = (props) => {
     <Autocomplete
       id="CountryPicker"
       style={{ width: 300 }}
-      onChange={(event, value) => props.handleCountryChange(value.name)} // prints the selected value
+      onChange={(event, value) => {
+        if (value === null) {
+          console.log("null");
+        } else props.handleCountryChange(value.name);
+      }}
+      // prints the selected value
       options={fetchedCountries}
       getOptionLabel={(option) => option.name}
       renderInput={(params) => (

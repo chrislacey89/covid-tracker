@@ -6,30 +6,36 @@ import CountryPicker from "./Components/CountryPicker/CountryPicker";
 
 import styles from "./App.module.css";
 
-import { fetchData } from "./api";
+import { fetchData, fetchDailyData } from "./api";
 
 function App() {
   const [data, setData] = useState({});
+  const [country, setCountry] = useState();
 
   useEffect(() => {
     // Create an scoped async function in the hook
-    async function anyNameFunction() {
+    async function initData() {
       const fetchedData = await fetchData();
       setData(fetchedData);
     }
     // Execute the created function directly
-    anyNameFunction();
+    initData();
   }, []);
 
+  // App logic
   const handleCountryChange = async (country) => {
-    console.log(country);
+    const fetchedData = await fetchData(country);
+    console.log(fetchedData);
+    setData(fetchedData);
+    setCountry(country);
   };
 
   return (
     <div className={styles.container}>
+      <h1>COVID-19 TRACKER</h1>
       <Cards data={data}></Cards>
       <CountryPicker handleCountryChange={handleCountryChange}></CountryPicker>
-      <Chart></Chart>
+      <Chart data={data} country={country}></Chart>
     </div>
   );
 }
