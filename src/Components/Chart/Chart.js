@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { fetchDailyData } from "../../api";
-import { Line, Bar } from "react-chartjs-2";
-import { Grid } from "@material-ui/core";
+import React, { useState, useEffect } from 'react';
+import { Line, Bar } from 'react-chartjs-2';
+import { Grid } from '@material-ui/core';
+import { fetchDailyData } from '../../api';
 
-import styles from "./Chart.module.css";
+import styles from './Chart.module.css';
 
 const Chart = (props) => {
   const [dailyData, setDailyData] = useState({});
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const dailyData = await fetchDailyData([]);
-      setDailyData(dailyData);
+      const fetchedDailyData = await fetchDailyData([]);
+      setDailyData(fetchedDailyData);
     };
     fetchAPI();
     console.log(dailyData);
@@ -24,15 +24,15 @@ const Chart = (props) => {
         datasets: [
           {
             data: dailyData.map((data) => data.confirmed.total),
-            label: "Infected",
-            borderColor: "#3333ff",
+            label: 'Infected',
+            borderColor: '#3333ff',
             fill: true,
           },
           {
             data: dailyData.map((data) => data.deaths.total),
-            label: "Deaths",
-            borderColor: "red",
-            backgroundColor: "rgba(255, 0, 0, 0.5)",
+            label: 'Deaths',
+            borderColor: 'red',
+            backgroundColor: 'rgba(255, 0, 0, 0.5)',
             fill: true,
           },
         ],
@@ -43,14 +43,14 @@ const Chart = (props) => {
   const barChart = props.data.confirmed ? (
     <Bar
       data={{
-        labels: ["Infected", "Recovered", "Deaths"],
+        labels: ['Infected', 'Recovered', 'Deaths'],
         datasets: [
           {
-            label: "People",
+            label: 'People',
             backgroundColor: [
-              "rgba(0, 0, 255, 0.5)",
-              "rgba(0, 255, 0, 0.5)",
-              "rgba(255, 0, 0, 0.5)",
+              'rgba(0, 0, 255, 0.5)',
+              'rgba(0, 255, 0, 0.5)',
+              'rgba(255, 0, 0, 0.5)',
             ],
             data: [
               props.data.confirmed.value,

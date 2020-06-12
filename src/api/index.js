@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const url = "https://covid19.mathdro.id/api";
+const url = 'https://covid19.mathdro.id/api';
 
 export const fetchData = async (country) => {
   let dynamicUrl = url;
@@ -39,7 +39,7 @@ export const fetchDailyData = async () => {
 export const fetchCountries = async () => {
   try {
     const res = await axios.get(`${url}/countries`);
-    const countries = res.data.countries;
+    const { countries } = res.data;
     console.log(countries);
     return countries;
   } catch (error) {

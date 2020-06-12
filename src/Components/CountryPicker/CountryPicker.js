@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
-import React, { useState, useEffect } from "react";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import React, { useState, useEffect } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import parse from "autosuggest-highlight/parse";
-import match from "autosuggest-highlight/match";
-import ReactCountryFlag from "react-country-flag";
+import parse from 'autosuggest-highlight/parse';
+import match from 'autosuggest-highlight/match';
+import ReactCountryFlag from 'react-country-flag';
 
-import { fetchCountries } from "../../api";
+import { fetchCountries } from '../../api';
 
 const CountryPicker = (props) => {
   const [fetchedCountries, setFetchedCountries] = useState([]);
@@ -26,7 +26,7 @@ const CountryPicker = (props) => {
       style={{ width: 300 }}
       onChange={(event, value) => {
         if (value === null) {
-          console.log("null");
+          console.log('null');
         } else props.handleCountryChange(value.name);
       }}
       // prints the selected value
@@ -51,10 +51,10 @@ const CountryPicker = (props) => {
               key={`${option.iso2}_emoji`}
               svg
               style={{
-                width: "2em",
-                height: "2em",
+                width: '2em',
+                height: '2em',
               }}
-            />{" "}
+            />
             {parts.map((part, index) => (
               <span
                 key={index}

@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Cards from "./Components/Cards/Cards";
-import Chart from "./Components/Chart/Chart";
-import CountryPicker from "./Components/CountryPicker/CountryPicker";
+import Header from './Components/Header/Header';
+import Cards from './Components/Cards/Cards';
+import Chart from './Components/Chart/Chart';
+import CountryPicker from './Components/CountryPicker/CountryPicker';
 
-import styles from "./App.module.css";
+import styles from './App.module.css';
 
-import { fetchData, fetchDailyData } from "./api";
+import { fetchData, fetchDailyData } from './api';
 
 function App() {
   const [data, setData] = useState({});
@@ -31,12 +32,16 @@ function App() {
   };
 
   return (
-    <div className={styles.container}>
-      <h1>COVID-19 TRACKER</h1>
-      <Cards data={data}></Cards>
-      <CountryPicker handleCountryChange={handleCountryChange}></CountryPicker>
-      <Chart data={data} country={country}></Chart>
-    </div>
+    <>
+      <Header />
+
+      <div className={styles.container}>
+        <h1>COVID-19 TRACKER</h1>
+        <Cards data={data} />
+        <CountryPicker handleCountryChange={handleCountryChange} />
+        <Chart data={data} country={country} />
+      </div>
+    </>
   );
 }
 
