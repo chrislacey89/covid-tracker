@@ -15,7 +15,7 @@ import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
-// import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
 const Header = () => {
@@ -32,14 +32,14 @@ const Header = () => {
   const headerLinks = [
     <div>
       <Hidden xsDown>
-        <Link component={null} to="/about">
+        <Link component={RouterLink} to="/about">
           <Button color="textSecondary">About</Button>
         </Link>
-        <Link component={null} to="/login">
-          <Button color="textSecondary">Login</Button>
+        <Link component={RouterLink} to="/World">
+          <Button color="textSecondary">World</Button>
         </Link>
-        <Link component={null} to="/signup">
-          <Button color="white">Sign Up</Button>
+        <Link component={RouterLink} to="/USA">
+          <Button color="white">USA</Button>
         </Link>
       </Hidden>
       <Hidden smUp>
@@ -65,19 +65,19 @@ const Header = () => {
       <Divider />
       <List>
         <ListItem>
-          <Link component={null} to="/about">
+          <Link component={RouterLink} to="/about">
             <Button color="textSecondary">About</Button>
           </Link>
         </ListItem>
         <ListItem>
-          <Link component={null} to="/login">
-            <Button color="textSecondary">Login</Button>
+          <Link component={RouterLink} to="/world">
+            <Button color="textSecondary">World</Button>
           </Link>
         </ListItem>
 
         <ListItem>
-          <Link component={null} to="/signup">
-            <Button color="white">Sign Up</Button>
+          <Link component={RouterLink} to="/USA">
+            <Button color="white">USA</Button>
           </Link>
         </ListItem>
       </List>
@@ -90,9 +90,9 @@ const Header = () => {
       <AppBar style={{ backgroundColor: '#543EF8' }} position="static">
         <Toolbar>
           <Grid container direction="row" justify="left" alignItems="center">
-            <Link component={null} to="/" underline="none">
+            <Link component={RouterLink} to="/" underline="none">
               <Typography variant="h6" color="textSecondary">
-                Pizza Delivery
+                Covid Tracker
               </Typography>
             </Link>
           </Grid>
